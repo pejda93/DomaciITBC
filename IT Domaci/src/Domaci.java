@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Domaci {
+public class Domaci {
+    public static void main(String[] args) {
+        System.out.println("Mladen");
+    }
 }
