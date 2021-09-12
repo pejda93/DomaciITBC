@@ -1,9 +1,10 @@
 SELECT email, phone_number FROM employees
-WHERE phone_number IS NOT NULL AND
-department_id IN (SELECT department_id FROM departments
+WHERE department_id IN (SELECT department_id FROM departments
                        WHERE location_id IN (SELECT location_id FROM locations
                                             WHERE country_id IN (SELECT country_id FROM countries
                                                                 WHERE region_ID = 1)))
+GROUP BY phone_number, email
+HAVING phone_number IS NOT NULL;                                                               
 
 SELECT * FROM dependents
 WHERE employee_id IN (SELECT employee_id FROM employees
