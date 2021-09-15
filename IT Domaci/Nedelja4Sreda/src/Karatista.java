@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Karatisti {
+public class Karatista {
 
     private String ime;
     private int godine;
@@ -10,7 +10,7 @@ public class Karatisti {
     private String[] kata;
 
 
-    public Karatisti(String ime, int godine, String rang, String[] kata) {
+    public Karatista(String ime, int godine, String rang, String[] kata) {
         this.ime = ime;
         if (godine>0){ this.godine = godine;}
             else{ this.godine = 1; System.out.println("Greska! Godine su 1 za "+this.ime);}
