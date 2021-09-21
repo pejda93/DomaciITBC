@@ -1,6 +1,7 @@
 import rs.itbootcamp.dao.*;
 import rs.itbootcamp.model.FoodModel;
 import rs.itbootcamp.model.FridgeModel;
+import rs.itbootcamp.model.MealModel;
 import rs.itbootcamp.model.UserModel;
 
 import java.util.ArrayList;
@@ -8,15 +9,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Main {
+public class Main2 {
 
     static FoodDao fd = new FoodDaoSQL();
     static FridgeDao fridge = new FridgeDaoSQL();
     static MealDao md = new MealDaoSQL();
     static int fridgeId = 1;
 
-    private static void addFoodToFridge(Scanner sc)
-    {
+    private static void addFoodToFridge(Scanner sc) {
         List<FoodModel> foodList = fd.getAllFood();
 
         int choice = -1;
@@ -98,10 +98,10 @@ public class Main {
         while (choice != 0);
     }
 
-    private static void searchMeals(Scanner sc){
+    private static void searchMeals(Scanner sc) {
         int choice;
 
-        do{
+        do {
             System.out.println("Search meals:");
             System.out.println("1. All meals");
             System.out.println("2. Search by name");
@@ -109,7 +109,7 @@ public class Main {
 
             choice = sc.nextInt();
 
-            switch (choice){
+            switch (choice) {
                 case 1 -> {
                     System.out.println("Items per page?");
                     int items = sc.nextInt();
@@ -130,56 +130,68 @@ public class Main {
         while (choice != 0);
     }
 
+    private static void printThePage(List<String> list, int itemsPerPage, int currentPage){
+
+        double poslednjiElement = list.size()*2;
+        if (itemsPerPage*currentPage > poslednjiElement) currentPage=1;
+
+        for (int i = itemsPerPage * (currentPage-1); i < itemsPerPage*currentPage; i++) { // i = pocetni element na strani -> poslednji element na strani
+            if (i >= list.size()) break;
+
+            System.out.println(i + 1 + ". " +list.get(i));
+
+        }
+
+        if (list.size() <= 0) {
+            System.out.println("Nema podataka!");
+
+        }
+        else{
+            System.out.println();
+            System.out.println("-exclude s -> [Remove everything that contains specified String]");
+            System.out.println("-startsWith s -> [Show those that start with specified String]");
+
+            if (itemsPerPage * currentPage < list.size()) System.out.println("n -> [Next Page]");
+            if (currentPage > 1) System.out.println("p -> [Previous Page]");
+            System.out.println("b -> [Back]");
+        }
 
 
-    private static void searchByPages(List<String> list, int itemsPerPage, Scanner sc){
+    }
+
+
+    private static void searchByPages(List<String> list, int itemsPerPage, Scanner sc) {
         int page = 1;
         String s;
 
         do {
-            if (itemsPerPage <= 0)
+            if (list.size() <= 0)
                 break;
-            for (int i = itemsPerPage * (page - 1); i < itemsPerPage * page; i++) {
-                if (i >= list.size())
-                    break;
-                System.out.println(i + 1 + ". " + list.get(i));
-            }
-            System.out.println();
-            System.out.println("-exclude s -> [Remove everything that contains specified String]");
-            System.out.println("-startsWith s -> [Show those that start with specified String]");
-            if (itemsPerPage * page < list.size())
-                System.out.println("n -> [Next Page]");
 
-            if (page > 1)
-                System.out.println("p -> [Previous Page]");
 
-            System.out.println("b -> [Back]");
+
+            printThePage(list, itemsPerPage, page);
+
             s = sc.next();
 
-            if (s.equals("n") && itemsPerPage * page < list.size())
-                page++;
-            else if (s.equals("p") && page > 1)
-                page--;
+            if (s.equals("n") && itemsPerPage * page < list.size()) page++;
+            else if (s.equals("p") && page > 1) page--;
             else if (s.equals("-exclude")) {
-                if (sc.hasNext()) {
-                    s = sc.next();
-                    searchByPages(exclude(list, s), itemsPerPage, sc);
-                }
-            }
-            else if (s.equals("-startsWith")) {
-                if (sc.hasNext()) {
-                    s = sc.next();
-                    searchByPages(startWith(list, s), itemsPerPage, sc);
-                }
+                s = sc.next();
+                list = exclude(list, s);
 
+            } else if (s.equals("-startsWith")) {
+                s = sc.next();
+                list = startWith(list, s);
             }
-        }
-        while (!s.equals("b"));
+        }while (!s.equals("b"));
+
+
     }
 
-    public static List<String> exclude(List<String> list, String s){
+    public static List<String> exclude(List<String> list, String s) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).toLowerCase().contains(s.toLowerCase())){
+            if (list.get(i).toLowerCase().contains(s.toLowerCase())) {
                 list.remove(list.get(i));
                 i--;
             }
@@ -196,7 +208,6 @@ public class Main {
         }
         return list;
     }
-
 
 
     private static void mainMenu(Scanner sc) {
