@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/IT Domaci.iml" filepath="$PROJECT_DIR$/.idea/IT Domaci.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja3/Nedelja3.iml" filepath="$PROJECT_DIR$/Nedelja3/Nedelja3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja4Nedelja/Nedelja4Nedelja.iml" filepath="$PROJECT_DIR$/Nedelja4Nedelja/Nedelja4Nedelja.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja4Sreda/Nedelja4Sreda.iml" filepath="$PROJECT_DIR$/Nedelja4Sreda/Nedelja4Sreda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja5/Nedelja5.iml" filepath="$PROJECT_DIR$/Nedelja5/Nedelja5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja5Nedelja/Nedelja5Nedelja.iml" filepath="$PROJECT_DIR$/Nedelja5Nedelja/Nedelja5Nedelja.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja7Nedelja/Nedelja7Nedelja.iml" filepath="$PROJECT_DIR$/Nedelja7Nedelja/Nedelja7Nedelja.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja7Sreda/Nedelja7Sreda.iml" filepath="$PROJECT_DIR$/Nedelja7Sreda/Nedelja7Sreda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Nedelja8Sreda/Nedelja8Sreda.iml" filepath="$PROJECT_DIR$/Nedelja8Sreda/Nedelja8Sreda.iml" />
+    </modules>
+  </component>
+</project>
